@@ -32,10 +32,7 @@ class HostServiceImplTest {
     @Test
     void should_reveal_a_box_if_user_chose_a_goat() throws InvalidContentException {
 
-        List<Box> prepareBoxes = Utility.prepareBoxes(
-                CommonConstant.GOAT,
-                CommonConstant.CAR,
-                CommonConstant.GOAT);
+        List<Box> prepareBoxes = Utility.getReadyBoxesRandomly();
         doReturn(prepareBoxes).when(boxService).prepareBoxes();
 
         Box actual = sut.revealTheGoatBoxFromTheLeftBoxes(boxService.prepareBoxes(), prepareBoxes.get(0));

@@ -15,15 +15,15 @@ import java.util.Map;
 @Service
 public class GameServiceImpl implements GameService {
     private final BoxService boxService;
-    private final HostServiceImpl hostService;
-    private final PlayerServiceImpl playerService;
+    private final HostService hostService;
+    private final PlayerService playerService;
 
     @Autowired
     public GameServiceImpl(BoxService boxService,
-                           HostServiceImpl hostServiceImpl,
-                           PlayerServiceImpl playerService) {
+                           HostService hostService,
+                           PlayerService playerService) {
         this.boxService = boxService;
-        this.hostService = hostServiceImpl;
+        this.hostService = hostService;
         this.playerService = playerService;
     }
 

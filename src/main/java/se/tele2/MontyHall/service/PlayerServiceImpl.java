@@ -7,16 +7,14 @@ import se.tele2.MontyHall.model.Box;
 import java.util.List;
 
 @Service
-public class PlayerServiceImpl {
+public class PlayerServiceImpl implements PlayerService{
 
+    @Override
     public Box selectFromBoxes(List<Box> boxes) {
         return Utility.getARandomBoxFrom(boxes);
     }
 
-    public int selectFromNumbers(List<Integer> numbers) {
-        return Utility.getARandomNumberFrom(numbers.toArray(Integer[]::new));
-    }
-
+    @Override
     public boolean accept() {
         return Utility.getARandomAnswer();
     }

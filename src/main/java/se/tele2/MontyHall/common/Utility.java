@@ -53,4 +53,18 @@ public class Utility {
         return boxes;
     }
 
+    public static List<Box> getReadyBoxesRandomly() {
+        List<String> contentTypes = List.of(CommonConstant.GOAT, CommonConstant.GOAT, CommonConstant.CAR);
+        List<Integer> integers = new ArrayList<>();
+        integers.add(0);
+        integers.add(1);
+        integers.add(2);
+        Collections.shuffle(integers);
+
+        return prepareBoxes(
+                contentTypes.get(integers.get(0)),
+                contentTypes.get(integers.get(1)),
+                contentTypes.get(integers.get(2))
+        );
+    }
 }
