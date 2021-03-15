@@ -34,5 +34,4 @@ public class HostServiceImpl implements HostService {
                 .orElseThrow(() -> new InvalidContentException("There is no box with GOAT!"));
     }
 
-
 }

@@ -99,11 +99,4 @@ public class GameServiceImplTest {
 
     }
 
-    @Test
-    void should_show_the_outcome() throws InvalidContentException {
-        doReturn(any()).when(gameService).getResultMessageFor(any());
-
-        verify(gameService, times(1)).getResultMessageFor(any());
-    }
-
 }

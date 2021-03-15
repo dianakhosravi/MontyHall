@@ -87,15 +87,4 @@ public class GameServiceImpl implements GameService {
         return result;
     }
 
-    @Override
-    public String getResultMessageFor(int times) throws InvalidContentException {
-        Map<String, Double> result = simulate(times);
-
-        return String.format("Changing choice wins %2.2f%% and fails %2.2f%% \nKeeping choice wins %2.2f%% and fails %2.2f%%"
-                , result.get(CommonConstant.CHANGE_CHOICE_SUCCESS)
-                , result.get(CommonConstant.CHANGE_CHOICE_FAIL)
-                , result.get(CommonConstant.KEEP_CHOICE_SUCCESS)
-                , result.get(CommonConstant.KEEP_CHOICE_FAIL));
-    }
-
 }

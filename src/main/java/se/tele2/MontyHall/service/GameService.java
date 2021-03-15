@@ -11,5 +11,4 @@ public interface GameService {
 
     Map<String, Double> simulate(Integer times) throws InvalidContentException;
 
-    String getResultMessageFor(int times) throws InvalidContentException;
 }

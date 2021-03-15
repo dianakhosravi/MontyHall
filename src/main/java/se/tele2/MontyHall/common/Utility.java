@@ -26,7 +26,6 @@ public class Utility {
         return random.nextBoolean();
     }
 
-
     public static List<Integer> exclude(int excludedNumber, Integer... numbers) {
         return Arrays.stream(numbers)
                 .filter(b -> !(b.equals(excludedNumber)))
