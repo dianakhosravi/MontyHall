@@ -1,42 +1,43 @@
 package se.tele2.MontyHall.service;
 
+import org.springframework.stereotype.Service;
 import se.tele2.MontyHall.model.Box;
-import se.tele2.MontyHall.model.PrizeType;
+import se.tele2.MontyHall.model.BoxContentType;
 
 import java.util.List;
-import java.util.Random;
 import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
+import static se.tele2.MontyHall.common.Utility.exclude;
+import static se.tele2.MontyHall.common.Utility.getARandomNumberFrom;
+
+@Service
 public class BoxServiceImpl implements BoxService {
+
     @Override
-    public List<Box> getReadyBoxes() {
+    public List<Box> prepareBoxes() {
 
-        int boxNumberWithPrize = getNumberOfBoxWithPrize();
-        List<Integer> collect = getNumberOfBoxesWithoutPrize(boxNumberWithPrize);
+        Integer[] numbers = {1, 2, 3};
+        int numberForCar = getARandomNumberFrom(numbers);
+        List<Integer> numbersForGoat = exclude(numberForCar, numbers);
 
-        Box boxWithPrize = createBox(boxNumberWithPrize, PrizeType.CAR);
-        Box boxWithoutPrize1 = createBox(collect.get(0), PrizeType.GOAT);
-        Box boxWithoutPrize2 = createBox(collect.get(1), PrizeType.GOAT);
+        Box boxWithCar = createBox(numberForCar, BoxContentType.CAR);
+        Box boxWithGoat1 = createBox(numbersForGoat.get(0), BoxContentType.GOAT);
+        Box boxWithGoat2 = createBox(numbersForGoat.get(1), BoxContentType.GOAT);
 
-        return List.of(boxWithPrize, boxWithoutPrize1, boxWithoutPrize2);
+        return List.of(boxWithCar, boxWithGoat1, boxWithGoat2);
     }
 
-    private List<Integer> getNumberOfBoxesWithoutPrize(int boxNumberWithPrize) {
-        return Stream.of(1, 2, 3)
-                .filter(b -> !(b.equals(boxNumberWithPrize)))
+    @Override
+    public List<Box> LeftBoxes(List<Box> boxes, Box selectedBox) {
+        return boxes.stream()
+                .filter(box -> !box.equals(selectedBox))
                 .collect(Collectors.toList());
     }
 
-    private int getNumberOfBoxWithPrize() {
-        Random random = new Random();
-        return random.nextInt(3) + 1;
-    }
-
-    private Box createBox(int numberOfBox, PrizeType prizeType) {
+    private Box createBox(int numberOfBox, BoxContentType boxContentType) {
         return Box.builder()
                 .boxNumber(numberOfBox)
-                .prizeType(prizeType)
+                .boxContentType(boxContentType)
                 .build();
     }
 }

@@ -6,5 +6,7 @@ import java.util.List;
 
 public interface BoxService {
 
-    List<Box> getReadyBoxes();
+    List<Box> prepareBoxes();
+
+    List<Box> LeftBoxes(List<Box> boxes, Box selectedBox);
 }
