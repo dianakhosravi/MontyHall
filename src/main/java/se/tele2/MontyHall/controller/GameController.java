@@ -24,7 +24,20 @@ public class GameController {
     }
 
     @GetMapping("/")
-    public String showTheResult(@RequestParam(value = "times") Integer times, Model model) throws InvalidContentException {
+    public String showWelcomePage(){
+
+        return "welcomePage";
+    }
+
+    @GetMapping("/result")
+    public String showTheResult(@RequestParam(value = "times") Integer times, Model model)
+            throws InvalidContentException {
+
+        if (times < 1) {
+            model.addAttribute("errorMessage", "Times should be more than zero");
+            return "errorPage";
+        }
+
         Map<String, Double> simulate = gameService.simulate(times);
 
         model.addAttribute("times", times);
@@ -35,11 +48,12 @@ public class GameController {
 
         model.addAttribute("isChangeSuccess", c_s > k_s);
         model.addAttribute("isKeepSuccess", k_s > c_s);
+
         model.addAttribute("change_success", c_s);
         model.addAttribute("change_fail", c_f);
         model.addAttribute("keep_success", k_s);
         model.addAttribute("keep_fail", k_f);
 
-        return "index";
+        return "resultPage";
     }
 }

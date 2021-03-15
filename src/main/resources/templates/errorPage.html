@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Exception page</title>
+</head>
+<body>
+<h1>error page</h1>
+<p th:text="${errorMessage}">error message</p>
+
+<button onclick="window.location.href = 'http://localhost:5000/';">Click Here to main menu</button>
+
+</body>
+</html>
