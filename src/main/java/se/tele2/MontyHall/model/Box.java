@@ -8,5 +8,5 @@ import lombok.Data;
 public class Box {
 
     private int boxNumber;
-    private PrizeType prizeType;
+    private BoxContentType boxContentType;
 }

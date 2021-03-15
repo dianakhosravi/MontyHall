@@ -1,5 +1,5 @@
 package se.tele2.MontyHall.model;
 
-public enum PrizeType {
+public enum BoxContentType {
     CAR, GOAT
 }
