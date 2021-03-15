@@ -15,7 +15,7 @@ import java.util.Map;
 @Service
 public class GameServiceImpl implements GameService {
     private final BoxService boxService;
-    private final HostServiceImpl hostServiceImpl;
+    private final HostServiceImpl hostService;
     private final PlayerServiceImpl playerService;
 
     @Autowired
@@ -23,7 +23,7 @@ public class GameServiceImpl implements GameService {
                            HostServiceImpl hostServiceImpl,
                            PlayerServiceImpl playerService) {
         this.boxService = boxService;
-        this.hostServiceImpl = hostServiceImpl;
+        this.hostService = hostServiceImpl;
         this.playerService = playerService;
     }
 
@@ -34,9 +34,9 @@ public class GameServiceImpl implements GameService {
         Box playersFirstChoice =
                 playerService.selectFromBoxes(prepareBoxes);
         Box revealedBox =
-                hostServiceImpl.revealTheGoatBoxFromTheLeftBoxes(prepareBoxes, playersFirstChoice);
+                hostService.revealTheGoatBoxFromTheLeftBoxes(prepareBoxes, playersFirstChoice);
         Box suggestedBox =
-                hostServiceImpl.suggestAnotherBox(prepareBoxes, playersFirstChoice, revealedBox);
+                hostService.suggestAnotherBox(prepareBoxes, playersFirstChoice, revealedBox);
 
         if (playerService.accept()) {
             return ChosenBox.builder()

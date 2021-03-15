@@ -1,7 +1,7 @@
 package se.tele2.MontyHall.service;
 
-import org.junit.jupiter.api.RepeatedTest;
-import org.junit.jupiter.api.RepetitionInfo;
+import lombok.extern.slf4j.Slf4j;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
@@ -17,14 +17,16 @@ import java.util.List;
 import java.util.Map;
 
 import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.Matchers.*;
+import static org.hamcrest.Matchers.equalTo;
+import static org.hamcrest.Matchers.is;
 import static org.junit.jupiter.api.Assertions.assertTrue;
-import static org.mockito.ArgumentMatchers.anyList;
-import static org.mockito.Mockito.doReturn;
+import static org.mockito.Mockito.*;
 
 @ExtendWith(MockitoExtension.class)
+@Slf4j
 public class GameServiceImplTest {
 
+    private GameService gameService;
     @Mock
     BoxServiceImpl boxService;
     @Mock
@@ -34,6 +36,15 @@ public class GameServiceImplTest {
 
     @InjectMocks
     GameServiceImpl sut;
+
+    @BeforeEach
+    void setup(){
+        gameService = new GameServiceImpl(
+                new BoxServiceImpl(),
+                new HostServiceImpl(),
+                new PlayerServiceImpl()
+        );
+    }
 
     @Test
     void should_run_return_correct_box() throws InvalidContentException {
@@ -66,17 +77,11 @@ public class GameServiceImplTest {
         assertThat(actual, is(equalTo(expected)));
     }
 
-    @RepeatedTest(100)
+    @Test
     void should_simulate_return_more_success_with_changing_the_choice() throws InvalidContentException {
         Map<String, Double> actualResult;
         int success = 0;
         int fail = 0;
-
-        GameService gameService = new GameServiceImpl(
-                new BoxServiceImpl(),
-                new HostServiceImpl(),
-                new PlayerServiceImpl()
-        );
 
         for (int i = 0; i < 100; i++) {
             actualResult = gameService.simulate(100);
@@ -93,4 +98,12 @@ public class GameServiceImplTest {
         assertTrue(success > fail);
 
     }
+
+    @Test
+    void should_show_the_outcome() throws InvalidContentException {
+        doReturn(any()).when(gameService).getResultMessageFor(any());
+
+        verify(gameService, times(1)).getResultMessageFor(any());
+    }
+
 }

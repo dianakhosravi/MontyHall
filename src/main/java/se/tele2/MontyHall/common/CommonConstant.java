@@ -1,7 +1,7 @@
 package se.tele2.MontyHall.common;
 
 public class CommonConstant {
-    //TODO:
+
     public static final String CAR = "CAR";
     public static final String GOAT = "GOAT";
 

@@ -1,5 +1,6 @@
 package se.tele2.MontyHall.service;
 
+import org.springframework.stereotype.Service;
 import se.tele2.MontyHall.common.Utility;
 import se.tele2.MontyHall.exception.InvalidContentException;
 import se.tele2.MontyHall.model.Box;
@@ -7,6 +8,7 @@ import se.tele2.MontyHall.model.BoxContentType;
 
 import java.util.List;
 
+@Service
 public class HostServiceImpl implements HostService {
 
     @Override
