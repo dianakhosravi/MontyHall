@@ -7,7 +7,7 @@ import se.tele2.MontyHall.model.Box;
 import java.util.List;
 
 @Service
-public class PlayerServiceImpl implements PlayerService{
+public class PlayerServiceImpl implements PlayerService {
 
     @Override
     public Box selectFromBoxes(List<Box> boxes) {

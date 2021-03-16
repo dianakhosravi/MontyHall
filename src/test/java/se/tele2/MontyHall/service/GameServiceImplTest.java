@@ -11,6 +11,7 @@ import se.tele2.MontyHall.common.CommonConstant;
 import se.tele2.MontyHall.common.Utility;
 import se.tele2.MontyHall.exception.InvalidContentException;
 import se.tele2.MontyHall.model.Box;
+import se.tele2.MontyHall.model.BoxContentType;
 import se.tele2.MontyHall.model.ChosenBox;
 
 import java.util.List;
@@ -20,7 +21,8 @@ import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.is;
 import static org.junit.jupiter.api.Assertions.assertTrue;
-import static org.mockito.Mockito.*;
+import static org.mockito.Mockito.anyList;
+import static org.mockito.Mockito.doReturn;
 
 @ExtendWith(MockitoExtension.class)
 @Slf4j
@@ -47,23 +49,18 @@ public class GameServiceImplTest {
     }
 
     @Test
-    void should_run_return_correct_box() throws InvalidContentException {
+    void should_run_method_work() throws InvalidContentException {
         //Given
-        doReturn(Utility.prepareBoxes(CommonConstant.GOAT, CommonConstant.GOAT, CommonConstant.CAR))
-                .when(boxService).prepareBoxes();
-        List<Box> prepareBoxes = boxService.prepareBoxes();
-        Box playersFirstChoice = prepareBoxes.get(2);
-        Box revealedBox = prepareBoxes.get(0);
-        Box suggestedBox = prepareBoxes.get(1);
+        List<Box> boxList = Utility.getReadyBoxesRandomly();
+        Box playersFirstChoice = Box.builder().boxContentType(BoxContentType.CAR).build();
+        Box revealedBox = Box.builder().boxContentType(BoxContentType.GOAT).build();
+        Box suggestedBox = Box.builder().boxContentType(BoxContentType.GOAT).build();
 
-        doReturn(prepareBoxes.get(2))
-                .when(playerService).selectFromBoxes(prepareBoxes);
-        doReturn(true)
-                .when(playerService).accept();
-        doReturn(revealedBox)
-                .when(hostService).revealTheGoatBoxFromTheLeftBoxes(prepareBoxes, playersFirstChoice);
-        doReturn(suggestedBox)
-                .when(hostService).suggestAnotherBox(prepareBoxes, playersFirstChoice, revealedBox);
+        doReturn(boxList).when(boxService).prepareBoxes();
+        doReturn(playersFirstChoice).when(playerService).selectFromBoxes(anyList());
+        doReturn(true).when(playerService).accept();
+        doReturn(revealedBox).when(hostService).revealTheGoatBoxFromTheLeftBoxes(boxList, playersFirstChoice);
+        doReturn(suggestedBox).when(hostService).suggestAnotherBox(boxList, playersFirstChoice, revealedBox);
 
         //When/Action
         ChosenBox actual = sut.run();
@@ -78,7 +75,7 @@ public class GameServiceImplTest {
     }
 
     @Test
-    void should_simulate_return_more_success_with_changing_the_choice() throws InvalidContentException {
+    void simulate_the_game_with_100_times() throws InvalidContentException {
         Map<String, Double> actualResult;
         int success = 0;
         int fail = 0;
@@ -96,7 +93,6 @@ public class GameServiceImplTest {
         System.out.println("fail " + fail);
 
         assertTrue(success > fail);
-
     }
 
 }
