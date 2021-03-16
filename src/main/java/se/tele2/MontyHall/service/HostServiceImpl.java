@@ -18,7 +18,7 @@ public class HostServiceImpl implements HostService {
         List<Box> twoLeftBoxes = Utility.exclude(boxes, playersFirstChoice);
 
         return twoLeftBoxes.stream()
-                .filter(box -> !BoxContentType.CAR.equals(box.getBoxContentType()))
+                .filter(box -> !BoxContentType.MONEY.equals(box.getBoxContentType()))
                 .findAny()
                 .orElseThrow(() -> new InvalidContentException("There is no empty box!"));
     }

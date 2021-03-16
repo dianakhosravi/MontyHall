@@ -31,9 +31,9 @@ class BoxServiceImplTest {
     }
 
     @RepeatedTest(10)
-    void should_boxes_contain_only_one_car() {
+    void should_exist_only_one_box_with_money() {
         int actualSize = (int) readyBoxes.stream()
-                .filter(item -> BoxContentType.CAR.equals(item.getBoxContentType()))
+                .filter(item -> BoxContentType.MONEY.equals(item.getBoxContentType()))
                 .count();
         assertThat(actualSize, is(equalTo(1)));
     }
@@ -69,7 +69,7 @@ class BoxServiceImplTest {
         List<Box> prepareBoxes = Utility.prepareBoxes(
                 CommonConstant.EMPTY,
                 CommonConstant.EMPTY,
-                CommonConstant.CAR
+                CommonConstant.MONEY
         );
 
         List<Box> actual = sut.LeftBoxes(prepareBoxes, prepareBoxes.get(2));

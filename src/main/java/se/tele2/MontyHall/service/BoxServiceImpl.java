@@ -17,14 +17,14 @@ public class BoxServiceImpl implements BoxService {
     public List<Box> prepareBoxes() {
 
         Integer[] numbers = {1, 2, 3};
-        int numberForCar = getARandomNumberFrom(numbers);
-        List<Integer> numbersForEmpty = exclude(numberForCar, numbers);
+        int numberForMoney = getARandomNumberFrom(numbers);
+        List<Integer> numbersForEmpty = exclude(numberForMoney, numbers);
 
-        Box boxWithCar = createBox(numberForCar, BoxContentType.CAR);
+        Box boxWithMoney = createBox(numberForMoney, BoxContentType.MONEY);
         Box emptyBox1 = createBox(numbersForEmpty.get(0), BoxContentType.EMPTY);
         Box emptyBox2 = createBox(numbersForEmpty.get(1), BoxContentType.EMPTY);
 
-        return List.of(boxWithCar, emptyBox1, emptyBox2);
+        return List.of(boxWithMoney, emptyBox1, emptyBox2);
     }
 
     @Override

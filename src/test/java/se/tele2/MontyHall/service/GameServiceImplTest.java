@@ -52,7 +52,7 @@ public class GameServiceImplTest {
     void should_run_method_work() throws InvalidContentException {
         //Given
         List<Box> boxList = Utility.getReadyBoxesRandomly();
-        Box playersFirstChoice = Box.builder().boxContentType(BoxContentType.CAR).build();
+        Box playersFirstChoice = Box.builder().boxContentType(BoxContentType.MONEY).build();
         Box revealedBox = Box.builder().boxContentType(BoxContentType.EMPTY).build();
         Box suggestedBox = Box.builder().boxContentType(BoxContentType.EMPTY).build();
 

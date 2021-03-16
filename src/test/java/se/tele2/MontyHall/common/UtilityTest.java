@@ -14,7 +14,7 @@ import static se.tele2.MontyHall.common.Utility.*;
 class UtilityTest {
 
     public static final String EMPTY = "EMPTY";
-    public static final String CAR = "CAR";
+    public static final String MONEY = "MONEY";
 
     @RepeatedTest(10)
     void should_extract_randomly_a_number_from_a_list() {
@@ -61,9 +61,9 @@ class UtilityTest {
         //given
         Box box1 = Box.builder().boxNumber(1).boxContentType(BoxContentType.EMPTY).build();
         Box box2 = Box.builder().boxNumber(2).boxContentType(BoxContentType.EMPTY).build();
-        Box box3 = Box.builder().boxNumber(3).boxContentType(BoxContentType.CAR).build();
+        Box box3 = Box.builder().boxNumber(3).boxContentType(BoxContentType.MONEY).build();
 
-        List<Box> actual = prepareBoxes(EMPTY, EMPTY, CAR);
+        List<Box> actual = prepareBoxes(EMPTY, EMPTY, MONEY);
 
         assertThat(actual, is(containsInAnyOrder(box1, box2, box3)));
     }
@@ -71,9 +71,9 @@ class UtilityTest {
     @Test
     void should_return_the_list_of_boxes_with_null() {
         Box box1 = Box.builder().boxNumber(1).boxContentType(BoxContentType.EMPTY).build();
-        Box box2 = Box.builder().boxNumber(2).boxContentType(BoxContentType.CAR).build();
+        Box box2 = Box.builder().boxNumber(2).boxContentType(BoxContentType.MONEY).build();
 
-        List<Box> actual = prepareBoxes(EMPTY, null, CAR);
+        List<Box> actual = prepareBoxes(EMPTY, null, MONEY);
         List<Box> actual_with_null = prepareBoxes(null, null, null);
 
         assertThat(actual, is(containsInAnyOrder(box1, box2)));

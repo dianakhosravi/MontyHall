@@ -2,7 +2,7 @@ package se.tele2.MontyHall.common;
 
 public class CommonConstant {
 
-    public static final String CAR = "CAR";
+    public static final String MONEY = "MONEY";
     public static final String EMPTY = "EMPTY";
 
     public static final String CHANGE_CHOICE_SUCCESS = "CHANGE_CHOICE_SUCCESS";

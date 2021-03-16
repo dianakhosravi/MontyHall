@@ -54,7 +54,7 @@ public class Utility {
     }
 
     public static List<Box> getReadyBoxesRandomly() {
-        List<String> contentTypes = List.of(CommonConstant.EMPTY, CommonConstant.EMPTY, CommonConstant.CAR);
+        List<String> contentTypes = List.of(CommonConstant.EMPTY, CommonConstant.EMPTY, CommonConstant.MONEY);
         List<Integer> integers = new ArrayList<>();
         integers.add(0);
         integers.add(1);

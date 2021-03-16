@@ -44,13 +44,13 @@ public class GameServiceImpl implements GameService {
             return ChosenBox.builder()
                     .box(suggestedBox)
                     .acceptToChange(true)
-                    .success((suggestedBox.getBoxContentType().equals(BoxContentType.CAR)))
+                    .success((suggestedBox.getBoxContentType().equals(BoxContentType.MONEY)))
                     .build();
         } else {
             return ChosenBox.builder()
                     .box(playersFirstChoice)
                     .acceptToChange(false)
-                    .success((playersFirstChoice.getBoxContentType().equals(BoxContentType.CAR)))
+                    .success((playersFirstChoice.getBoxContentType().equals(BoxContentType.MONEY)))
                     .build();
         }
     }
