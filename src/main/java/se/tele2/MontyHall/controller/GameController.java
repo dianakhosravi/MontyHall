@@ -30,7 +30,7 @@ public class GameController {
     }
 
     @GetMapping("/result")
-    public String showTheResult(@RequestParam(value = "times") String times, Model model)
+    public String showTheResult(@RequestParam(value = "times" ,defaultValue = "100") String times , Model model)
             throws InvalidContentException {
         int timesValue;
         try {
