@@ -13,7 +13,7 @@ import static se.tele2.MontyHall.common.Utility.*;
 
 class UtilityTest {
 
-    public static final String GOAT = "GOAT";
+    public static final String EMPTY = "EMPTY";
     public static final String CAR = "CAR";
 
     @RepeatedTest(10)
@@ -37,7 +37,7 @@ class UtilityTest {
     }
 
     @Test
-    void should_return_an_empty_list_if_list_includes_only_the_excluded_number() {
+    void should_return_an_empty_list_if_the_list_includes_only_the_excluded_number() {
 
         Integer[] numbers = {40};
 
@@ -59,21 +59,21 @@ class UtilityTest {
     @Test
     void should_return_the_list_of_boxes() {
         //given
-        Box box1 = Box.builder().boxNumber(1).boxContentType(BoxContentType.GOAT).build();
-        Box box2 = Box.builder().boxNumber(2).boxContentType(BoxContentType.GOAT).build();
+        Box box1 = Box.builder().boxNumber(1).boxContentType(BoxContentType.EMPTY).build();
+        Box box2 = Box.builder().boxNumber(2).boxContentType(BoxContentType.EMPTY).build();
         Box box3 = Box.builder().boxNumber(3).boxContentType(BoxContentType.CAR).build();
 
-        List<Box> actual = prepareBoxes(GOAT, GOAT, CAR);
+        List<Box> actual = prepareBoxes(EMPTY, EMPTY, CAR);
 
         assertThat(actual, is(containsInAnyOrder(box1, box2, box3)));
     }
 
     @Test
     void should_return_the_list_of_boxes_with_null() {
-        Box box1 = Box.builder().boxNumber(1).boxContentType(BoxContentType.GOAT).build();
+        Box box1 = Box.builder().boxNumber(1).boxContentType(BoxContentType.EMPTY).build();
         Box box2 = Box.builder().boxNumber(2).boxContentType(BoxContentType.CAR).build();
 
-        List<Box> actual = prepareBoxes(GOAT, null, CAR);
+        List<Box> actual = prepareBoxes(EMPTY, null, CAR);
         List<Box> actual_with_null = prepareBoxes(null, null, null);
 
         assertThat(actual, is(containsInAnyOrder(box1, box2)));

@@ -1,9 +1,12 @@
 # Monty-hall problem simulation
 
-Java code that simulates the game described in Monty-hall paradox: [Monty-hall paradox](https://en.wikipedia.org/wiki/Monty_Hall_problem)
+Java code that simulates the game described in Monty-hall paradox.
 
-*source: Wikipedia*
-> Suppose you're on a game show, and you're given the choice of three doors: Behind one door is a car; behind the others, goats. You pick a door, say No. 1, and the host, who knows what's behind the doors, opens another door, say No. 3, which has a goat. He then says to you, "Do you want to pick door No. 2?" Is it to your advantage to switch your choice?
+The problem is a well-known puzzle that you can read more about at: http://en.wikipedia.org/wiki/Monty_Hall_problem
+
+
+# Problem description
+> Assume that you are attending a TV show where you can win money by picking the right box. The game show host shows you three boxes explaining that the money is in one of the boxes. He asks you to pick one of them without opening it. After you have picked one of the boxes he opens one of the other two boxes which is empty. Now he turns to you and asks, do you want to change your mind, picking the remaining box?
 
 
 # Requirements

@@ -36,7 +36,7 @@ public class GameServiceImpl implements GameService {
         Box playersFirstChoice =
                 playerService.selectFromBoxes(prepareBoxes);
         Box revealedBox =
-                hostService.revealTheGoatBoxFromTheLeftBoxes(prepareBoxes, playersFirstChoice);
+                hostService.revealTheEmptyBoxFromTheLeftBoxes(prepareBoxes, playersFirstChoice);
         Box suggestedBox =
                 hostService.suggestAnotherBox(prepareBoxes, playersFirstChoice, revealedBox);
 

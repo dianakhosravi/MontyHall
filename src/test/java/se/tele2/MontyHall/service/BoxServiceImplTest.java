@@ -1,6 +1,5 @@
 package se.tele2.MontyHall.service;
 
-import org.hamcrest.Matchers;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.RepeatedTest;
 import org.junit.jupiter.api.Test;
@@ -68,8 +67,8 @@ class BoxServiceImplTest {
     @Test
     void selectedBox_should_not_exist_in_leftBoxes() {
         List<Box> prepareBoxes = Utility.prepareBoxes(
-                CommonConstant.GOAT,
-                CommonConstant.GOAT,
+                CommonConstant.EMPTY,
+                CommonConstant.EMPTY,
                 CommonConstant.CAR
         );
 

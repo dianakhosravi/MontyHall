@@ -53,13 +53,13 @@ public class GameServiceImplTest {
         //Given
         List<Box> boxList = Utility.getReadyBoxesRandomly();
         Box playersFirstChoice = Box.builder().boxContentType(BoxContentType.CAR).build();
-        Box revealedBox = Box.builder().boxContentType(BoxContentType.GOAT).build();
-        Box suggestedBox = Box.builder().boxContentType(BoxContentType.GOAT).build();
+        Box revealedBox = Box.builder().boxContentType(BoxContentType.EMPTY).build();
+        Box suggestedBox = Box.builder().boxContentType(BoxContentType.EMPTY).build();
 
         doReturn(boxList).when(boxService).prepareBoxes();
         doReturn(playersFirstChoice).when(playerService).selectFromBoxes(anyList());
         doReturn(true).when(playerService).accept();
-        doReturn(revealedBox).when(hostService).revealTheGoatBoxFromTheLeftBoxes(boxList, playersFirstChoice);
+        doReturn(revealedBox).when(hostService).revealTheEmptyBoxFromTheLeftBoxes(boxList, playersFirstChoice);
         doReturn(suggestedBox).when(hostService).suggestAnotherBox(boxList, playersFirstChoice, revealedBox);
 
         //When/Action

@@ -18,13 +18,13 @@ public class BoxServiceImpl implements BoxService {
 
         Integer[] numbers = {1, 2, 3};
         int numberForCar = getARandomNumberFrom(numbers);
-        List<Integer> numbersForGoat = exclude(numberForCar, numbers);
+        List<Integer> numbersForEmpty = exclude(numberForCar, numbers);
 
         Box boxWithCar = createBox(numberForCar, BoxContentType.CAR);
-        Box boxWithGoat1 = createBox(numbersForGoat.get(0), BoxContentType.GOAT);
-        Box boxWithGoat2 = createBox(numbersForGoat.get(1), BoxContentType.GOAT);
+        Box emptyBox1 = createBox(numbersForEmpty.get(0), BoxContentType.EMPTY);
+        Box emptyBox2 = createBox(numbersForEmpty.get(1), BoxContentType.EMPTY);
 
-        return List.of(boxWithCar, boxWithGoat1, boxWithGoat2);
+        return List.of(boxWithCar, emptyBox1, emptyBox2);
     }
 
     @Override
