@@ -36,10 +36,12 @@ public class GameController {
         try {
             timesValue = Integer.parseInt(times);
         } catch (NumberFormatException e) {
+            log.error("input value {} cant be a number ", times, e.getCause());
             model.addAttribute("errorMessage", "Times should be an integer");
             return "errorPage";
         }
         if (timesValue < 1) {
+            log.error("times is less then 1, {} ", timesValue);
             model.addAttribute("errorMessage", "Times should be more than zero");
             return "errorPage";
         }
