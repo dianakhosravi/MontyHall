@@ -79,4 +79,12 @@ class UtilityTest {
         assertThat(actual, is(containsInAnyOrder(box1, box2)));
         assertThat(actual_with_null, is(empty()));
     }
+
+    @Test
+    void shoud_get_round_double_with_2_decimal(){
+        double num = 10.12545678;
+        double actual = round(num, 2);
+
+        assertThat(actual, is(equalTo(10.13)));
+    }
 }

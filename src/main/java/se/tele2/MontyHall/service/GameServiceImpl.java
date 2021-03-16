@@ -3,6 +3,7 @@ package se.tele2.MontyHall.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import se.tele2.MontyHall.common.CommonConstant;
+import se.tele2.MontyHall.common.Utility;
 import se.tele2.MontyHall.exception.InvalidContentException;
 import se.tele2.MontyHall.model.Box;
 import se.tele2.MontyHall.model.BoxContentType;
@@ -11,6 +12,7 @@ import se.tele2.MontyHall.model.ChosenBox;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
 
 @Service
 public class GameServiceImpl implements GameService {
@@ -79,12 +81,12 @@ public class GameServiceImpl implements GameService {
                 }
             }
         }
-        result.put(CommonConstant.CHANGE_CHOICE_SUCCESS, changeChoiceSuccess * 100.0 / times);
-        result.put(CommonConstant.KEEP_CHOICE_SUCCESS, keepChoiceSuccess * 100.0 / times);
-        result.put(CommonConstant.CHANGE_CHOICE_FAIL, changeChoiceFail * 100.0 / times);
-        result.put(CommonConstant.KEEP_CHOICE_FAIL, keepChoiceFail * 100.0 / times);
+
+        result.put(CommonConstant.CHANGE_CHOICE_SUCCESS, Utility.round(changeChoiceSuccess * 100.0 / times, 2));
+        result.put(CommonConstant.KEEP_CHOICE_SUCCESS, Utility.round(keepChoiceSuccess * 100.0 / times, 2));
+        result.put(CommonConstant.CHANGE_CHOICE_FAIL, Utility.round(changeChoiceFail * 100.0 / times, 2));
+        result.put(CommonConstant.KEEP_CHOICE_FAIL, Utility.round(keepChoiceFail * 100.0 / times, 2));
 
         return result;
     }
-
 }

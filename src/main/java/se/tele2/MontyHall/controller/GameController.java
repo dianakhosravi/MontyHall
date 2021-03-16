@@ -24,23 +24,29 @@ public class GameController {
     }
 
     @GetMapping("/")
-    public String showWelcomePage(){
+    public String showWelcomePage() {
 
         return "welcomePage";
     }
 
     @GetMapping("/result")
-    public String showTheResult(@RequestParam(value = "times") Integer times, Model model)
+    public String showTheResult(@RequestParam(value = "times") String times, Model model)
             throws InvalidContentException {
-
-        if (times < 1) {
+        int timesValue;
+        try {
+            timesValue = Integer.parseInt(times);
+        } catch (NumberFormatException e) {
+            model.addAttribute("errorMessage", "Times should be an integer");
+            return "errorPage";
+        }
+        if (timesValue < 1) {
             model.addAttribute("errorMessage", "Times should be more than zero");
             return "errorPage";
         }
 
-        Map<String, Double> simulate = gameService.simulate(times);
+        Map<String, Double> simulate = gameService.simulate(timesValue);
 
-        model.addAttribute("times", times);
+        model.addAttribute("times", timesValue);
         Double c_s = simulate.get(CommonConstant.CHANGE_CHOICE_SUCCESS);
         Double c_f = simulate.get(CommonConstant.CHANGE_CHOICE_FAIL);
         Double k_s = simulate.get(CommonConstant.KEEP_CHOICE_SUCCESS);
