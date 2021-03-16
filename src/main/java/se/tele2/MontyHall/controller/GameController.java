@@ -24,8 +24,14 @@ public class GameController {
     }
 
     @GetMapping("/")
-    public String showWelcomePage() {
+    public String showWelcomePage(Model model) {
+        model.addAttribute("message", "Please submit a value:");
 
+        model.addAttribute("times", 0);
+        model.addAttribute("change_success", 0);
+        model.addAttribute("change_fail", 0);
+        model.addAttribute("keep_success", 0);
+        model.addAttribute("keep_fail", 0);
         return "welcomePage";
     }
 

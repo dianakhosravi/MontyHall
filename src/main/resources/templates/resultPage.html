@@ -5,14 +5,13 @@
 <head>
     <meta charset="UTF-8">
     <title>result</title>
+    <link rel="stylesheet" href="style.css">
     <style>
+        body {background-color: antiquewhite;margin-left: 30%;margin-right: 25%;margin-top: 10%;}
         table, th, td {
             border: 1px solid black;
             text-align: center;
         }
-
-
-
 
     </style>
 </head>
@@ -38,10 +37,13 @@
     </tr>
 </table>
 <br><br>
-<form action="/result" method="get">
-    <label>Times to test:</label>
-    <input type="text" name="times" th:attr="value = ${times}"><br><br>
-    <input type="submit" value="Submit">
-</form>
+<div style="background: gainsboro; width:60%" >
+    <p style="color: red">Please submit a value!</p>
+    <form action="/result" method="get">
+        <label>Times to test:</label>
+        <input type="text" name="times" th:attr="value = ${times}"><br><br>
+        <input type="submit" value="Submit">
+    </form>
+</div>
 </body>
 </html>
