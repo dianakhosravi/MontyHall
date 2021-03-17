@@ -7,43 +7,43 @@
     <title>result</title>
     <link rel="stylesheet" href="style.css">
     <style>
-        body {background-color: antiquewhite;margin-left: 30%;margin-right: 25%;margin-top: 10%;}
+        body {background-color: antiquewhite;}
         table, th, td {
             border: 1px solid black;
             text-align: center;
         }
-
     </style>
 </head>
-<body>
-
-<table style="width:60%">
-    <tr>
-        <th th:text="${times + ' Times'}">times</th>
-        <td>Win</td>
-        <td>Fail</td>
-    </tr>
-    <tr style="background-color: red;"
-        th:style="${isChangeSuccess} ? 'background-color: green' : 'background-color: red'">
-        <td>Change the choice</td>
-        <th th:text="${change_success}">change_success</th>
-        <th th:text="${change_fail}">change_fail</th>
-    </tr>
-    <tr style="background-color: red;"
-        th:style="${isKeepSuccess} ? 'background-color: green' : 'background-color: red'">
-        <td>Keep the choice</td>
-        <th th:text="${keep_success}">keep_success</th>
-        <th th:text="${keep_fail}">keep_fail</th>
-    </tr>
-</table>
-<br><br>
-<div style="background: gainsboro; width:60%" >
-    <p style="color: red">Please submit a value!</p>
-    <form action="/result" method="get">
-        <label>Times to test:</label>
-        <input type="text" name="times" th:attr="value = ${times}"><br><br>
-        <input type="submit" value="Submit">
-    </form>
+<body style="background-color: antiquewhite;">
+<div style="margin: auto;width: 50%;border: 3px solid green;padding: 10px;">
+    <table style="width: 100%;">
+        <tr>
+            <th th:text="${times + ' Times'}">times</th>
+            <td>Win</td>
+            <td>Fail</td>
+        </tr>
+        <tr style="background-color: red;"
+            th:style="${isChangeSuccess} ? 'background-color: green' : 'background-color: red'">
+            <td>Change the choice</td>
+            <th th:text="${change_success + '%'}">change_success</th>
+            <th th:text="${change_fail + '%'}">change_fail</th>
+        </tr>
+        <tr style="background-color: red;"
+            th:style="${isKeepSuccess} ? 'background-color: green' : 'background-color: red'">
+            <td>Keep the choice</td>
+            <th th:text="${keep_success + '%'}">keep_success</th>
+            <th th:text="${keep_fail + '%'}">keep_fail</th>
+        </tr>
+    </table>
+    <br>
+    <div style="background: gainsboro; width:100%">
+        <p style="color: red">Please submit a value!</p>
+        <form action="/result" method="get">
+            <label>Times to test:</label>
+            <input type="text" name="times" th:attr="value = ${times}"><br><br>
+            <input type="submit" value="Submit">
+        </form>
+    </div>
 </div>
 </body>
 </html>
