@@ -31,4 +31,4 @@ mvn clean install
 
 Running the test for 1 million times:
 
-![img_1.png](img_1.png)
+![img.png](img.png)
