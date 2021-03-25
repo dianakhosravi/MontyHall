@@ -39,6 +39,7 @@ public class GameController {
     public String showTheResult(@RequestParam(value = "times" ,defaultValue = "100") String times , Model model)
             throws InvalidContentException {
         int timesValue;
+
         try {
             timesValue = Integer.parseInt(times);
         } catch (NumberFormatException e) {
@@ -67,6 +68,12 @@ public class GameController {
         model.addAttribute("change_fail", c_f);
         model.addAttribute("keep_success", k_s);
         model.addAttribute("keep_fail", k_f);
+        int timesOfswitch =(int)simulate.entrySet().stream()
+                .filter(es -> es.getKey().equals(CommonConstant.CHANGE_CHOICE_FAIL)||
+                        es.getKey().equals(CommonConstant.CHANGE_CHOICE_SUCCESS))
+                .count();
+
+        model.addAttribute("timesOfswitch" ,timesOfswitch);
 
         return "resultPage";
     }

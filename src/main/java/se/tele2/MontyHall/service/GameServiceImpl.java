@@ -59,7 +59,7 @@ public class GameServiceImpl implements GameService {
     public Map<String, Double> simulate(Integer times) throws InvalidContentException {
         Map<String, Double> result = new HashMap<>();
         ChosenBox chosenBox;
-
+        int accepted=0;
         int changeChoiceSuccess = 0;
         int keepChoiceSuccess = 0;
         int changeChoiceFail = 0;
@@ -67,6 +67,9 @@ public class GameServiceImpl implements GameService {
 
         for (int i = 0; i < times; i++) {
             chosenBox = run();
+            if(chosenBox.getAcceptToChange()){
+                accepted++;
+            }
             if (chosenBox.getSuccess()) {
                 if (chosenBox.getAcceptToChange()) {
                     changeChoiceSuccess++;

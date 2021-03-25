@@ -24,7 +24,7 @@
         </tr>
         <tr style="background-color: red;"
             th:style="${isChangeSuccess} ? 'background-color: green' : 'background-color: red'">
-            <td>Change the choice</td>
+            <td th:text="${'Change the choice' + timesOfswitch}">Change the choice</td>
             <th th:text="${change_success + '%'}">change_success</th>
             <th th:text="${change_fail + '%'}">change_fail</th>
         </tr>
